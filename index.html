@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Surya Studio · Catálogo</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,7 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap"
     />
     <style>
-      /* base: página independente, sem bibliotecas externas */
       *,
       *::before,
       *::after {
@@ -50,7 +53,6 @@
       }
 
       :root {
-        /* paleta das fotos */
         --x-coral: #c2386a;
         --x-coral-ink: #b23060;
         --x-turq: #c2386a;
@@ -100,14 +102,12 @@
         margin: 0 auto;
         padding: 0 18px;
       }
-      /* faixas de largura total dentro do container */
       .x-bleed {
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
         padding-left: calc(50vw - 50%);
         padding-right: calc(50vw - 50%);
       }
-      /* faixa étnica multicolorida */
       .x-band {
         height: 16px;
         border: 0;
@@ -116,7 +116,6 @@
             repeat-x left bottom / 18px 8px,
           var(--x-band) left top / 100% 8px no-repeat;
       }
-      /* top */
       .x-top {
         text-align: center;
         padding: 28px 0 22px;
@@ -147,7 +146,6 @@
         color: var(--x-grey);
         margin-top: 8px;
       }
-      /* filters */
       .x-bar {
         position: sticky;
         top: 0;
@@ -226,7 +224,6 @@
       .x-pill--only[aria-pressed="true"]::before {
         background: var(--c-on);
       }
-      /* sections */
       .x-sec {
         padding-top: 54px;
         padding-bottom: 60px;
@@ -296,7 +293,6 @@
           grid-template-columns: repeat(4, minmax(0, 1fr));
         }
       }
-      /* card */
       .x-card {
         display: flex;
         flex-direction: column;
@@ -454,7 +450,6 @@
         color: var(--x-grey);
         padding: 20px 0;
       }
-      /* how to buy */
       .x-steps {
         display: grid;
         gap: 18px;
@@ -512,7 +507,6 @@
         display: block;
         line-height: 1.2;
       }
-      /* footer */
       .x-foot {
         background: var(--x-emerald-deep);
         color: #f7eedf;
@@ -531,8 +525,8 @@
         background-color: var(--x-cream);
       }
       .x-foot__logo {
-        width: 132px;
-        height: 132px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         background: #f7eedf;
         display: flex;
@@ -541,7 +535,10 @@
         box-shadow: 0 0 0 4px var(--x-emerald-deep), 0 0 0 5px var(--x-gold);
       }
       .x-foot img {
-        width: 96px;
+        width: auto;
+        height: 112px;
+        max-width: 100px;
+        object-fit: contain;
       }
       .x-foot a {
         color: var(--x-gold);
@@ -564,7 +561,6 @@
         color: #f7eedf;
         font-size: 12px;
       }
-      /* floating whatsapp */
       .x-wa {
         position: fixed;
         right: 16px;
@@ -586,7 +582,6 @@
         height: 27px;
         fill: #fff;
       }
-      /* lightbox */
       .x-box {
         position: fixed;
         inset: 0;
@@ -625,7 +620,6 @@
       .x-seal--out{color:var(--x-grey)}
       .x-foot{padding-top:44px}
 
-      /* identidade: verde, dourado, solzinhos */
       .x-sun-div{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 14px;max-width:220px}
       .x-sun-div::before,.x-sun-div::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#c39027)}
       .x-sun-div::after{background:linear-gradient(90deg,#c39027,transparent)}
@@ -725,7 +719,7 @@
         <div class="x-sun-div x-sun-div--light" aria-hidden="true"><span></span></div>
         
         <div class="x-foot__logo">
-          <img src="logo-surya.png" alt="Surya Studio" width="96" loading="lazy" />
+          <img src="logo-surya.png" alt="Surya Studio" loading="lazy" />
         </div>
         <div class="x-foot__links">
           <a href="https://instagram.com/uuse_surya" target="_blank" rel="noopener">Instagram</a>
@@ -780,17 +774,6 @@
     </div>
 
     <script>
-      /*
-        CONFIGURAÇÃO — troque só estas duas linhas:
-
-        WHATSAPP: número da loja, só dígitos, com 55 (Brasil) + DDD + número.
-          Exemplo: "5591987654321" para (91) 98765-4321. Sem espaços, traços ou "+".
-
-        PLANILHA_CSV: link da planilha publicada como CSV (opcional).
-          No Google Planilhas: Arquivo > Compartilhar > Publicar na Web >
-          escolha a aba > formato "Valores separados por vírgula (.csv)" > Publicar,
-          e cole o link entre as aspas. Deixe "" para usar só os dados desta página.
-      */
       const WHATSAPP = "5591984559699";
       const PLANILHA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRCb9VXCaowu94CSr3OETkiFH6RW-kNrcwxJve3Dx2xfRvv_AX9GgfmCo3HYK-14skB08hSd9ngRg0W/pub?gid=686707445&single=true&output=csv";
 
@@ -1349,7 +1332,7 @@
         if (iNome === -1) return;
         const iCat = col("Categoria");
         const iTam = col("Tamanho");
-        const iDesc = col("Descrição", "Descricao");
+        const iDesc = col("Descrição", "Descricao", "Descrição (opcional)");
         const iFoto = col("Foto", "Fotos", "Foto (link do Drive)");
         const txt = (l, i) => (i !== -1 && l[i] != null ? String(l[i]).trim() : "");
         const numero = (v) => {
@@ -1375,7 +1358,6 @@
           if (!nomeL) return;
           let p = novos[norm(nomeL)] ? null : PRODUTOS.find((x) => norm(x.nome) === norm(nomeL));
           if (!p) {
-            // Peça nova: precisa de categoria, preço e foto.
             const c = cat(txt(l, iCat));
             const v = numero(txt(l, iPreco));
             const fs = fotosDe(txt(l, iFoto));
