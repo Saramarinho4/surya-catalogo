@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Surya Studio · Catálogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap"
+    />
+    <style>
+      /* base: página independente, sem bibliotecas externas */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      figure,
+      hr {
+        margin: 0;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      button {
+        font: inherit;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--x-turq-ink);
+        outline-offset: 2px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
+      }
+
+      :root {
+        /* paleta das fotos */
+        --x-coral: #c2386a;
+        --x-coral-ink: #b23060;
+        --x-turq: #c2386a;
+        --x-turq-ink: #b23060;
+        --x-gold: #f6ead0;
+        --x-gold-ink: #b23060;
+        --x-gold-soft: #e3b65a;
+        --x-emerald: #b23060;
+        --x-emerald-deep: #0d4734;
+        --x-terra: #55622f;
+        --x-terra-ink: #55622f;
+        --x-cream: #ffffff;
+        --x-cream-warm: #ffffff;
+        --x-mint: #fbf6ec;
+        --x-olive: var(--x-emerald);
+        --x-accent: var(--x-emerald);
+        --x-ink: #24262a;
+        --x-green: #065b41;
+        --x-green-deep: #0d4734;
+        --x-grey: #5f6469;
+        --x-line: #e7e0d6;
+        --x-serif: "Cormorant Garamond", Georgia, serif;
+        --x-sans: "Jost", system-ui, sans-serif;
+        --x-band: repeating-linear-gradient(
+          90deg,
+          var(--x-coral) 0 36px,
+          var(--x-gold) 36px 72px,
+          var(--x-turq) 72px 108px,
+          var(--x-emerald) 108px 144px,
+          var(--x-terra) 144px 180px
+        );
+      }
+      html,
+      body {
+        background: var(--x-cream);
+      }
+      body {
+        color: var(--x-ink);
+        font-family: var(--x-sans);
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-x: clip;
+      }
+      .x-wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+      /* faixas de largura total dentro do container */
+      .x-bleed {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+      }
+      /* faixa étnica multicolorida */
+      .x-band {
+        height: 16px;
+        border: 0;
+        background:
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='8'%3E%3Cpath d='M0 0 9 8 18 0z' fill='%23e9a23b'/%3E%3C/svg%3E")
+            repeat-x left bottom / 18px 8px,
+          var(--x-band) left top / 100% 8px no-repeat;
+      }
+      /* top */
+      .x-top {
+        text-align: center;
+        padding: 28px 0 22px;
+        background: #fff;
+      }
+      .x-top img {
+        width: 140px;
+        margin: 0 auto;
+      }
+      .x-rule {
+        width: 90px;
+        height: 3px;
+        border-radius: 3px;
+        background: var(--x-coral);
+        margin: 18px auto 14px;
+        border: 0;
+      }
+      .x-tag {
+        font-family: var(--x-serif);
+        font-size: 21px;
+        letter-spacing: 0.01em;
+        color: var(--x-ink);
+      }
+      .x-place {
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--x-grey);
+        margin-top: 8px;
+      }
+      /* filters */
+      .x-bar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--x-line);
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .x-bar__in {
+        max-width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        justify-content: center;
+        scrollbar-width: none;
+      }
+      .x-bar__in::-webkit-scrollbar {
+        display: none;
+      }
+      .x-pill {
+        flex: none;
+        min-height: 44px;
+        padding: 7px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--x-line);
+        background: #fff;
+        color: var(--x-ink);
+        font: inherit;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        --c: var(--x-gold);
+        --c-on: var(--x-ink);
+      }
+      .x-pill::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--c);
+      }
+      .x-pill[data-cat="todos"]::before {
+        background: var(--x-green);
+      }
+      .x-pill[data-cat="vestidos"] {
+        --c: var(--x-coral-ink);
+        --c-on: #fff;
+      }
+      .x-pill[data-cat="calcas"] {
+        --c: var(--x-coral-ink);
+        --c-on: #fff;
+      }
+      .x-pill[data-cat="cosmeticos"] {
+        --c: var(--x-emerald);
+        --c-on: #fff;
+      }
+      .x-pill--only {
+        --c: var(--x-turq-ink);
+        --c-on: #fff;
+      }
+      .x-pill.is-on,
+      .x-pill--only[aria-pressed="true"] {
+        background: var(--c);
+        border-color: var(--c);
+        color: var(--c-on);
+        font-weight: 400;
+      }
+      .x-pill.is-on::before,
+      .x-pill--only[aria-pressed="true"]::before {
+        background: var(--c-on);
+      }
+      /* sections */
+      .x-sec {
+        padding-top: 54px;
+        padding-bottom: 60px;
+      }
+      #vestidos {
+        background: var(--x-cream-warm);
+        --x-accent: var(--x-green);
+        --x-accent-soft: var(--x-coral);
+      }
+      #calcas {
+        background: var(--x-cream-warm);
+        --x-accent: var(--x-green);
+        --x-accent-soft: var(--x-coral);
+      }
+      #cosmeticos {
+        background: var(--x-mint);
+        --x-accent: var(--x-green);
+        --x-accent-soft: var(--x-coral);
+      }
+      .x-sec h2 {
+        font-family: var(--x-serif);
+        font-weight: 400;
+        font-size: 34px;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        color: var(--x-green);
+      }
+      .x-sec__sub {
+        color: var(--x-grey);
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .x-sec__sub::before {
+        content: "";
+        width: 28px;
+        height: 3px;
+        border-radius: 3px;
+        background: var(--x-accent-soft, var(--x-gold));
+      }
+      .x-sec__head {
+        margin-bottom: 26px;
+      }
+      .x-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px 16px;
+      }
+      @media (min-width: 680px) {
+        .x-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 40px 26px;
+        }
+        .x-top img {
+          width: 180px;
+        }
+        .x-sec h2 {
+          font-size: 44px;
+        }
+      }
+      @media (min-width: 1000px) {
+        .x-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+      /* card */
+      .x-card {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 6px 18px rgba(80, 50, 20, 0.06);
+      }
+      .x-card.is-hidden {
+        display: none;
+      }
+      .x-stage {
+        position: relative;
+        overflow: hidden;
+        background: #f5f3f0;
+      }
+      .x-slides {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+      .x-slides::-webkit-scrollbar {
+        display: none;
+      }
+      .x-slides img {
+        flex: 0 0 100%;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center;
+        scroll-snap-align: center;
+        cursor: zoom-in;
+      }
+      .x-dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+      }
+      .x-dots span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+      }
+      .x-dots span.is-on {
+        background: #fff;
+      }
+      .x-seal {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        z-index: 2;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--x-gold);
+        color: var(--x-ink);
+        font-weight: 400;
+      }
+      .x-seal--out {
+        background: #fff;
+        color: var(--x-grey);
+        font-weight: 300;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+      }
+      .x-card.is-out .x-slides img {
+        opacity: 0.55;
+        filter: saturate(0.6);
+      }
+      .x-card__body {
+        padding: 12px 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+      .x-name {
+        font-family: var(--x-serif);
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.2;
+      }
+      .x-desc {
+        color: var(--x-grey);
+        font-size: 13.5px;
+      }
+      .x-size {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--x-accent);
+      }
+      .x-price {
+        font-size: 17px;
+        letter-spacing: 0.02em;
+        font-weight: 400;
+      }
+      .x-opts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .x-opt {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--x-line);
+        background: #fff;
+        font: inherit;
+        font-size: 12.5px;
+        color: var(--x-ink);
+        cursor: pointer;
+      }
+      .x-opt[aria-pressed="true"] {
+        border-color: var(--x-accent);
+        color: var(--x-accent);
+        box-shadow: inset 0 0 0 1px var(--x-accent);
+        font-weight: 400;
+      }
+      .x-btn {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: var(--x-accent);
+        color: #fff;
+        text-decoration: none;
+        font-size: 13.5px;
+        letter-spacing: 0.06em;
+        border: 1px solid var(--x-accent);
+        text-align: center;
+      }
+      .x-btn--ghost {
+        background: #fff;
+        color: var(--x-accent);
+        border-color: var(--x-accent);
+      }
+      .x-btn:hover {
+        opacity: 0.9;
+      }
+      .x-empty {
+        color: var(--x-grey);
+        padding: 20px 0;
+      }
+      /* how to buy */
+      .x-steps {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      @media (min-width: 680px) {
+        .x-steps {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      #como-comprar {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      .x-how {
+        background: var(--x-green-deep);
+        color: #fff;
+        border-radius: 16px;
+        padding: 30px 22px;
+        position: relative;
+        overflow: hidden;
+      }
+      .x-how::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 6px;
+        background: none;
+      }
+      @media (min-width: 680px) {
+        .x-how {
+          padding: 40px 40px 36px;
+        }
+      }
+      .x-how h2 {
+        color: #fff;
+      }
+      .x-how .x-sec__sub {
+        color: #fff;
+      }
+      .x-how .x-sec__sub::before {
+        background: var(--x-gold-soft);
+      }
+      .x-step {
+        border-top: 1px solid rgba(255, 255, 255, 0.45);
+        padding-top: 14px;
+      }
+      .x-step b {
+        font-family: var(--x-serif);
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--x-gold-soft);
+        display: block;
+        line-height: 1.2;
+      }
+      /* footer */
+      .x-foot {
+        background: var(--x-emerald-deep);
+        color: #f7eedf;
+        padding-top: 0;
+        padding-bottom: 36px;
+        text-align: center;
+        display: grid;
+        gap: 12px;
+        justify-items: center;
+      }
+      .x-foot .x-band {
+        justify-self: stretch;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        margin-bottom: 22px;
+        background-color: var(--x-cream);
+      }
+      .x-foot__logo {
+        width: 132px;
+        height: 132px;
+        border-radius: 50%;
+        background: #f7eedf;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0 4px var(--x-emerald-deep), 0 0 0 5px var(--x-gold);
+      }
+      .x-foot img {
+        width: 96px;
+      }
+      .x-foot a {
+        color: var(--x-gold);
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 4px;
+        text-decoration: underline;
+        text-decoration-color: rgba(242, 185, 205, 0.6);
+        text-underline-offset: 6px;
+      }
+      .x-foot__links {
+        display: flex;
+        gap: 22px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .x-foot small {
+        color: #f7eedf;
+        font-size: 12px;
+      }
+      /* floating whatsapp */
+      .x-wa {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 40;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: var(--x-green);
+        color: #fff;
+        box-shadow: 0 0 0 3px #fff, 0 6px 20px rgba(0, 0, 0, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      }
+      .x-wa svg {
+        width: 27px;
+        height: 27px;
+        fill: #fff;
+      }
+      /* lightbox */
+      .x-box {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.97);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .x-box.is-open {
+        display: flex;
+      }
+      .x-box img {
+        max-width: 100%;
+        max-height: 88vh;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+      .x-box__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--x-line);
+        background: #fff;
+        font-size: 20px;
+        line-height: 1;
+        color: var(--x-ink);
+        cursor: pointer;
+      }
+          .x-band{display:none}
+      .x-seal{color:var(--x-coral-ink)}
+      .x-seal--out{color:var(--x-grey)}
+      .x-foot{padding-top:44px}
+
+      /* identidade: verde, dourado, solzinhos */
+      .x-sun-div{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 14px;max-width:220px}
+      .x-sun-div::before,.x-sun-div::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#c39027)}
+      .x-sun-div::after{background:linear-gradient(90deg,#c39027,transparent)}
+      .x-sun-div span{width:26px;height:26px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20stroke%3D%22%23C39027%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%225%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%280%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2830%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2860%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2890%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28120%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28150%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28180%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28210%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28240%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28270%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28300%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28330%2032%2032%29%22/%3E%3C/svg%3E") center/contain no-repeat}
+      .x-sun-div--light::before{background:linear-gradient(90deg,transparent,#e3b65a)}
+      .x-sun-div--light::after{background:linear-gradient(90deg,#e3b65a,transparent)}
+      .x-sun-div--light span{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20stroke%3D%22%23E3B65A%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%225%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%280%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2830%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2860%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2890%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28120%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28150%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28180%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28210%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28240%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28270%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28300%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28330%2032%2032%29%22/%3E%3C/svg%3E")}
+      .x-sec__sub{font-family:"Pinyon Script",cursive;text-transform:none;letter-spacing:0;font-size:26px;color:#a63a55;margin-bottom:2px;display:block}
+      .x-sec__sub::before{display:none}
+      .x-sec h2{text-transform:uppercase;letter-spacing:.14em;font-size:28px;font-weight:400}
+      .x-sec__head{text-align:center}
+      .x-sec__head::after{content:"";display:block;width:22px;height:22px;margin:12px auto 0;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20stroke%3D%22%23C39027%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%225%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%280%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2830%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2860%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2890%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28120%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28150%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28180%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28210%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28240%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28270%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28300%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28330%2032%2032%29%22/%3E%3C/svg%3E") center/contain no-repeat}
+      .x-how{background:linear-gradient(160deg,#0d4734,#065b41)}
+      .x-how .x-sec__sub{color:#f0c9d3}
+      .x-how .x-sec__head::after{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20stroke%3D%22%23E3B65A%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%225%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%280%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2830%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2860%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%2890%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28120%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28150%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28180%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28210%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28240%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28270%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28300%2032%2032%29%22/%3E%3Cline%20x1%3D%2232%22%20y1%3D%226%22%20x2%3D%2232%22%20y2%3D%2214%22%20transform%3D%22rotate%28330%2032%2032%29%22/%3E%3C/svg%3E")}
+      .x-step b{color:#e3b65a}
+      .x-seal{background:#f6ead0;color:#0d4734}
+      .x-seal--out{background:#fff;color:var(--x-grey)}
+      .x-foot a{color:#e3b65a}
+      .x-foot .x-sun-div{margin-top:0;margin-bottom:8px}
+      .x-note{font-family:var(--x-serif);font-style:italic;font-size:17px;color:var(--x-grey);margin-top:8px}
+    </style>
+  </head>
+  <body>
+    <div class="x-wrap">
+      <header class="x-top x-bleed">
+        <img src="logo-surya.png" alt="Surya Studio" width="180" />
+        <div class="x-sun-div" aria-hidden="true"><span></span></div>
+        <p class="x-tag">Moda boho e cosméticos naturais da Amazônia</p>
+        <p class="x-place">Belém · Pará</p>
+      </header>
+      
+
+      <nav class="x-bar x-bleed" aria-label="Filtros do catálogo">
+        <div class="x-bar__in">
+          <button class="x-pill is-on" type="button" data-cat="todos">Todos</button>
+          <button class="x-pill" type="button" data-cat="vestidos">Vestidos</button>
+          <button class="x-pill" type="button" data-cat="calcas">Calças e conjuntos</button>
+          <button class="x-pill" type="button" data-cat="cosmeticos">Cosméticos naturais</button>
+          <button class="x-pill x-pill--only" type="button" id="only-available" aria-pressed="false">
+            Só disponíveis
+          </button>
+        </div>
+      </nav>
+
+      <main>
+        <section class="x-sec x-bleed" id="vestidos">
+          <div class="x-sec__head">
+            <p class="x-sec__sub">Coleção</p>
+            <h2>Vestidos</h2>
+            <p class="x-note">A maioria das nossas peças é única e não tem reposição.</p>
+          </div>
+          <div class="x-grid" id="grid-vestidos"></div>
+        </section>
+
+        <section class="x-sec x-bleed" id="calcas">
+          <div class="x-sec__head">
+            <p class="x-sec__sub">Leveza</p>
+            <h2>Calças e conjuntos</h2>
+          </div>
+          <div class="x-grid" id="grid-calcas"></div>
+        </section>
+
+        <section class="x-sec x-bleed" id="cosmeticos">
+          <div class="x-sec__head">
+            <p class="x-sec__sub">Cuidado natural</p>
+            <h2>Cosméticos naturais</h2>
+          </div>
+          <div class="x-grid" id="grid-cosmeticos"></div>
+        </section>
+
+        <section class="x-sec" id="como-comprar">
+          <div class="x-how">
+          <div class="x-sec__head">
+            <p class="x-sec__sub">Simples assim</p>
+            <h2>Como comprar</h2>
+          </div>
+          <div class="x-steps">
+            <div class="x-step">
+              <b>01</b>
+              <p>Escolha a peça e o tamanho.</p>
+            </div>
+            <div class="x-step">
+              <b>02</b>
+              <p>Toque em "Pedir pelo WhatsApp".</p>
+            </div>
+            <div class="x-step">
+              <b>03</b>
+              <p>Combinamos pagamento e entrega por lá.</p>
+            </div>
+          </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="x-foot x-bleed">
+        <div class="x-sun-div x-sun-div--light" aria-hidden="true"><span></span></div>
+        
+        <div class="x-foot__logo">
+          <img src="logo-surya.png" alt="Surya Studio" width="96" loading="lazy" />
+        </div>
+        <div class="x-foot__links">
+          <a href="https://instagram.com/uuse_surya" target="_blank" rel="noopener">Instagram</a>
+          <a id="foot-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <small>CNPJ 64.999.256/0001-37</small>
+        <small>Site desenvolvido por Astera SM ✦</small>
+      </footer>
+    </div>
+
+    <a class="x-wa" id="float-wa" href="#" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29Z"
+        />
+      </svg>
+    </a>
+
+    <div class="x-box" id="lightbox" role="dialog" aria-label="Foto ampliada" aria-modal="true">
+      <button class="x-box__close" type="button" id="box-close" aria-label="Fechar">×</button>
+      <div id="box-slot"></div>
+    </div>
+
+    <div id="fotos" hidden>
+      <img data-foto="encanto-1.jpg" src="encanto-1.jpg" alt="Vestido Encanto, foto 1" loading="lazy" />
+      <img data-foto="encanto-2.jpg" src="encanto-2.jpg" alt="Vestido Encanto, foto 2" loading="lazy" />
+      <img data-foto="serena-1.jpg" src="serena-1.jpg" alt="Vestido Serena, foto 1" loading="lazy" />
+      <img data-foto="serena-2.jpg" src="serena-2.jpg" alt="Vestido Serena, foto 2" loading="lazy" />
+      <img data-foto="serena-3.jpg" src="serena-3.jpg" alt="Vestido Serena, foto 3" loading="lazy" />
+      <img data-foto="solar-1.jpg" src="solar-1.jpg" alt="Vestido Solar, foto 1" loading="lazy" />
+      <img data-foto="solar-2.jpg" src="solar-2.jpg" alt="Vestido Solar, foto 2" loading="lazy" />
+      <img data-foto="solar-3.jpg" src="solar-3.jpg" alt="Vestido Solar, foto 3" loading="lazy" />
+      <img data-foto="shakti-1.jpg" src="shakti-1.jpg" alt="Vestido Shakti, foto 1" loading="lazy" />
+      <img data-foto="shakti-2.jpg" src="shakti-2.jpg" alt="Vestido Shakti, foto 2" loading="lazy" />
+      <img data-foto="shakti-3.jpg" src="shakti-3.jpg" alt="Vestido Shakti, foto 3" loading="lazy" />
+      <img data-foto="jurema-1.jpg" src="jurema-1.jpg" alt="Vestido Jurema, foto 1" loading="lazy" />
+      <img data-foto="jurema-2.jpg" src="jurema-2.jpg" alt="Vestido Jurema, foto 2" loading="lazy" />
+      <img data-foto="jurema-3.jpg" src="jurema-3.jpg" alt="Vestido Jurema, foto 3" loading="lazy" />
+      <img data-foto="sereia-1.jpg" src="sereia-1.jpg" alt="Vestido Sereia, foto 1" loading="lazy" />
+      <img data-foto="sereia-2.jpg" src="sereia-2.jpg" alt="Vestido Sereia, foto 2" loading="lazy" />
+      <img data-foto="maya-1.jpg" src="maya-1.jpg" alt="Vestido Bohochic Maya, foto 1" loading="lazy" />
+      <img data-foto="maya-2.jpg" src="maya-2.jpg" alt="Vestido Bohochic Maya, foto 2" loading="lazy" />
+      <img data-foto="maya-3.jpg" src="maya-3.jpg" alt="Vestido Bohochic Maya, foto 3" loading="lazy" />
+      <img data-foto="gaia-1.jpg" src="gaia-1.jpg" alt="Vestido Gaia, foto 1" loading="lazy" />
+      <img data-foto="gaia-2.jpg" src="gaia-2.jpg" alt="Vestido Gaia, foto 2" loading="lazy" />
+      <img data-foto="oleo-coco-1.jpg" src="oleo-coco-1.jpg" alt="Óleo de Coco" loading="lazy" />
+      <img data-foto="raizes-1.jpg" src="raizes-1.jpg" alt="Perfume Botânico Raízes" loading="lazy" />
+      <img data-foto="repelente-1.jpg" src="repelente-1.jpg" alt="Repelente Natural" loading="lazy" />
+      <img data-foto="cabocla-1.jpg" src="cabocla-1.jpg" alt="Perfume Botânico Cabocla" loading="lazy" />
+      <img data-foto="yin-yang-1.jpg" src="yin-yang-1.jpg" alt="Sagrado Óleo Yin-Yang" loading="lazy" />
+      <img data-foto="rosa-mosqueta-1.jpg" src="rosa-mosqueta-1.jpg" alt="Óleo Vegetal de Rosa Mosqueta" loading="lazy" />
+    </div>
+
+    <script>
+      /*
+        CONFIGURAÇÃO — troque só estas duas linhas:
+
+        WHATSAPP: número da loja, só dígitos, com 55 (Brasil) + DDD + número.
+          Exemplo: "5591987654321" para (91) 98765-4321. Sem espaços, traços ou "+".
+
+        PLANILHA_CSV: link da planilha publicada como CSV (opcional).
+          No Google Planilhas: Arquivo > Compartilhar > Publicar na Web >
+          escolha a aba > formato "Valores separados por vírgula (.csv)" > Publicar,
+          e cole o link entre as aspas. Deixe "" para usar só os dados desta página.
+      */
+      const WHATSAPP = "5591984559699";
+      const PLANILHA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRCb9VXCaowu94CSr3OETkiFH6RW-kNrcwxJve3Dx2xfRvv_AX9GgfmCo3HYK-14skB08hSd9ngRg0W/pub?gid=686707445&single=true&output=csv";
+
+      const PRODUTOS = [
+        {
+          id: "encanto",
+          categoria: "vestidos",
+          nome: "Vestido Encanto",
+          descricao: "Estampa autêntica, feito em seda indiana de alta qualidade.",
+          tamanho: "Tamanho único: veste PP ao GG",
+          opcoes: null,
+          preco: 165.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["encanto-1.jpg", "encanto-2.jpg"],
+        },
+        {
+          id: "serena",
+          categoria: "vestidos",
+          nome: "Vestido Serena Curto",
+          descricao: "Vestido curto em seda indiana, costas abertas com amarração.",
+          tamanho: "Tamanho único: veste PP ao GG e Plus Size",
+          opcoes: null,
+          preco: 160.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["serena-1.jpg", "serena-2.jpg", "serena-3.jpg"],
+        },
+        {
+          id: "solar",
+          categoria: "vestidos",
+          nome: "Vestido Solar",
+          descricao:
+            "Estampa cheia de autenticidade, em seda indiana premium. Ajustável na cintura, busto e alças. Comprimento 140 cm.",
+          tamanho: "Tamanho único: veste PP ao GG e Plus Size",
+          opcoes: null,
+          preco: 168.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["solar-1.jpg", "solar-2.jpg", "solar-3.jpg"],
+        },
+        {
+          id: "shakti",
+          categoria: "vestidos",
+          nome: "Vestido Shakti",
+          descricao: "Longo e fluido, em seda indiana.",
+          tamanho: "Tamanho único: veste PP ao GG e Plus Size",
+          opcoes: null,
+          preco: 168.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["shakti-1.jpg", "shakti-2.jpg", "shakti-3.jpg"],
+        },
+        {
+          id: "jurema",
+          categoria: "vestidos",
+          nome: "Vestido Jurema",
+          descricao: "Em seda Extra Gold, com estampa dourada.",
+          tamanho: "Tamanho único: veste PP ao GG e Plus Size",
+          opcoes: null,
+          preco: 199.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["jurema-1.jpg", "jurema-2.jpg", "jurema-3.jpg"],
+        },
+        {
+          id: "sereia",
+          categoria: "vestidos",
+          nome: "Vestido Sereia",
+          descricao: "Barra assimétrica, leve e fluido.",
+          tamanho: "Tamanho único: veste PP ao GG e Plus Size",
+          opcoes: null,
+          preco: 175.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["sereia-1.jpg", "sereia-2.jpg"],
+        },
+        {
+          id: "maya",
+          categoria: "vestidos",
+          nome: "Vestido Bohochic Maya",
+          descricao: "Longo boho com estampa delicada.",
+          tamanho: "Veste do P ao GG",
+          opcoes: null,
+          preco: 150.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["maya-1.jpg", "maya-2.jpg", "maya-3.jpg"],
+        },
+        {
+          id: "gaia",
+          categoria: "vestidos",
+          nome: "Vestido Gaia",
+          descricao: "Em seda, costas nuas, alças e cintura reguláveis.",
+          tamanho: "Veste do 36 ao 48",
+          opcoes: null,
+          preco: 168.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["gaia-1.jpg", "gaia-2.jpg"],
+        },
+        {
+          id: "serena-longo",
+          categoria: "vestidos",
+          nome: "Vestido Serena Longo",
+          descricao: "Longo, em seda indiana, com costas nuas.",
+          tamanho: "Veste do PP ao Plus Size",
+          opcoes: null,
+          preco: 179.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["serena-longo-1.jpg", "serena-longo-2.jpg"],
+        },
+        {
+          id: "clarice",
+          categoria: "vestidos",
+          nome: "Vestido Clarice",
+          descricao: "Curto, em viscose bordada. Disponível em 3 cores.",
+          tamanho: "Tamanho único: veste PP ao G",
+          opcoes: null,
+          preco: 145.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["clarice-1.jpg", "clarice-2.jpg", "clarice-3.jpg"],
+        },
+        {
+          id: "pantera",
+          categoria: "vestidos",
+          nome: "Vestido Bohochic Pantera",
+          descricao: "Longo boho, leve e fluido.",
+          tamanho: "Veste do P ao GG",
+          opcoes: null,
+          preco: 175.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["pantera-1.jpg", "pantera-2.jpg"],
+        },
+        {
+          id: "ciganinha",
+          categoria: "vestidos",
+          nome: "Vestido Ciganinha Longo",
+          descricao: "Longo, com decote ciganinha e babados.",
+          tamanho: "Tamanho único: veste PP ao GG",
+          opcoes: null,
+          preco: 189.9,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["ciganinha-1.jpg"],
+        },
+        {
+          id: "kaftan",
+          categoria: "vestidos",
+          nome: "Kaftan Indiano Longo",
+          descricao: "Longo, com cintura regulável.",
+          tamanho: "Veste do PP ao GG",
+          opcoes: null,
+          preco: 89.9,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["kaftan-1.jpg"],
+        },
+        {
+          id: "patchwork",
+          categoria: "calcas",
+          nome: "Calça Patchwork Seda",
+          descricao: "Pantalona de seda em patchwork de estampas, leve e cheia de movimento.",
+          tamanho: "Veste do PP ao GG",
+          opcoes: null,
+          preco: 160.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["patchwork-1.jpg", "patchwork-2.jpg"],
+        },
+        {
+          id: "pantalona",
+          categoria: "calcas",
+          nome: "Calça Índia Pantalona",
+          descricao: "Pantalona indiana 100% algodão, fresquinha para o dia a dia.",
+          tamanho: "Veste do PP ao GG",
+          opcoes: null,
+          preco: 150.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["pantalona-1.jpg", "pantalona-2.jpg"],
+        },
+        {
+          id: "seda-gold",
+          categoria: "calcas",
+          nome: "Calça Seda Gold",
+          descricao: "Calça de seda com estampa em dourado, fluida e elegante.",
+          tamanho: "Veste do PP ao GG",
+          opcoes: null,
+          preco: 160.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["seda-gold-1.jpg", "seda-gold-2.jpg"],
+        },
+        {
+          id: "oxum",
+          categoria: "calcas",
+          nome: "Conjunto Oxum",
+          descricao: "Conjunto de cropped amarrado e saia longa, leve e luminoso.",
+          tamanho: "Veste do PP ao GG",
+          opcoes: null,
+          preco: 199.99,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["oxum-1.jpg"],
+        },
+        {
+          id: "oleo-coco",
+          categoria: "cosmeticos",
+          nome: "Óleo de Coco",
+          descricao:
+            "100% natural, prensado a frio. Origem: comunidades extrativistas da Amazônia.",
+          tamanho: "",
+          opcoes: [
+            { rotulo: "100 ml", preco: 22.0 },
+            { rotulo: "500 ml", preco: 50.0 },
+            { rotulo: "1 litro", preco: 99.0 },
+          ],
+          preco: 22.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["oleo-coco-1.jpg"],
+        },
+        {
+          id: "raizes",
+          categoria: "cosmeticos",
+          nome: "Perfume Botânico Raízes",
+          descricao:
+            "Priprioca, patchouli dark e sândalo, com óleos essenciais e álcool de cereais. 100% natural e botânico.",
+          tamanho: "",
+          opcoes: [
+            { rotulo: "10 ml", preco: 48.0 },
+            { rotulo: "30 ml", preco: 108.0 },
+            { rotulo: "50 ml", preco: 218.0 },
+          ],
+          preco: 48.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["raizes-1.jpg"],
+        },
+        {
+          id: "repelente",
+          categoria: "cosmeticos",
+          nome: "Repelente Natural",
+          descricao:
+            "Óleos de andiroba e copaíba com citronela, cravo, eucalipto e tea tree, em álcool de cereais. Livre de aditivos químicos.",
+          tamanho: "100 ml",
+          opcoes: null,
+          preco: 39.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["repelente-1.jpg"],
+        },
+        {
+          id: "cabocla",
+          categoria: "cosmeticos",
+          nome: "Perfume Botânico Cabocla",
+          descricao: "Rosas, priprioca, bergamota, canela e mulateira.",
+          tamanho: "",
+          opcoes: [
+            { rotulo: "10 ml", preco: 40.0 },
+            { rotulo: "30 ml", preco: 88.0 },
+            { rotulo: "50 ml", preco: 160.0 },
+          ],
+          preco: 40.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["cabocla-1.jpg"],
+        },
+        {
+          id: "yin-yang",
+          categoria: "cosmeticos",
+          nome: "Sagrado Óleo Yin-Yang",
+          descricao:
+            "Óleo de massagem íntima com óleos vegetais e essenciais, para momentos de reequilíbrio e relaxamento a dois.",
+          tamanho: "50 ml",
+          opcoes: null,
+          preco: 48.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["yin-yang-1.jpg"],
+        },
+        {
+          id: "rosa-mosqueta",
+          categoria: "cosmeticos",
+          nome: "Óleo Vegetal de Rosa Mosqueta",
+          descricao: "Óleo vegetal puro para a pele.",
+          tamanho: "30 ml",
+          opcoes: null,
+          preco: 35.0,
+          exclusiva: false,
+          situacao: "Disponível",
+          fotos: ["rosa-mosqueta-1.jpg"],
+        },
+      ];
+
+      const brl = (v) =>
+        "R$ " + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      function waLink(texto) {
+        return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
+      }
+
+      document.getElementById("foot-wa").href = waLink(
+        "Olá, Surya! Vim pelo catálogo e gostaria de saber mais sobre as peças."
+      );
+      document.getElementById("float-wa").href = waLink(
+        "Olá, Surya! Vim pelo catálogo e gostaria de saber mais sobre as peças."
+      );
+
+      function cardHTML(p) {
+        const esgotado = p.situacao === "Esgotado";
+        const fotos = "";
+        const dots =
+          p.fotos.length > 1
+            ? '<div class="x-dots">' +
+              p.fotos.map((f, i) => '<span class="' + (i === 0 ? "is-on" : "") + '"></span>').join("") +
+              "</div>"
+            : "";
+        let selo = "";
+        if (esgotado) selo = '<span class="x-seal x-seal--out">Esgotado</span>';
+        else if (p.exclusiva) selo = '<span class="x-seal">Peça exclusiva</span>';
+        const opts = p.opcoes
+          ? '<div class="x-opts">' +
+            p.opcoes
+              .map(
+                (o, i) =>
+                  '<button class="x-opt" type="button" data-i="' +
+                  i +
+                  '" aria-pressed="' +
+                  (i === 0) +
+                  '">' +
+                  o.rotulo +
+                  "</button>"
+              )
+              .join("") +
+            "</div>"
+          : "";
+        const tam = p.tamanho ? '<p class="x-size">' + p.tamanho + "</p>" : "";
+        const preco = p.opcoes ? p.opcoes[0].preco : p.preco;
+        return (
+          '<article class="x-card' +
+          (esgotado ? " is-out" : "") +
+          '" data-id="' +
+          p.id +
+          '" data-cat="' +
+          p.categoria +
+          '" data-situacao="' +
+          p.situacao +
+          '">' +
+          '<div class="x-stage">' +
+          selo +
+          '<div class="x-slides">' +
+          fotos +
+          "</div>" +
+          dots +
+          "</div>" +
+          '<div class="x-card__body">' +
+          '<h3 class="x-name">' +
+          p.nome +
+          "</h3>" +
+          '<p class="x-desc">' +
+          p.descricao +
+          "</p>" +
+          tam +
+          opts +
+          '<p class="x-price">' +
+          brl(preco) +
+          "</p>" +
+          '<a class="x-btn' +
+          (esgotado ? " x-btn--ghost" : "") +
+          '" target="_blank" rel="noopener" href="#">' +
+          (esgotado ? "Avise-me quando voltar" : "Pedir pelo WhatsApp") +
+          "</a>" +
+          "</div></article>"
+        );
+      }
+
+      function mensagem(p, opcao) {
+        const preco = opcao ? opcao.preco : p.preco;
+        const nome = opcao ? p.nome + ", " + opcao.rotulo : p.nome;
+        if (p.situacao === "Esgotado") {
+          return (
+            "Olá, Surya! Tenho interesse em: " +
+            nome +
+            " (" +
+            brl(preco) +
+            "), que está esgotado. Pode me avisar quando voltar?"
+          );
+        }
+        return "Olá, Surya! Tenho interesse em: " + nome + " (" + brl(preco) + "). Ainda está disponível?";
+      }
+
+      function pintarCard(card, p) {
+        const sel = card.querySelector('.x-opt[aria-pressed="true"]');
+        const opcao = p.opcoes ? p.opcoes[Number(sel ? sel.dataset.i : 0)] : null;
+        card.querySelector(".x-price").textContent = brl(opcao ? opcao.preco : p.preco);
+        card.querySelector(".x-btn").href = waLink(mensagem(p, opcao));
+      }
+
+      function render() {
+        ["vestidos", "calcas", "cosmeticos"].forEach((cat) => {
+          document.getElementById("grid-" + cat).innerHTML = PRODUTOS.filter(
+            (p) => p.categoria === cat
+          )
+            .map(cardHTML)
+            .join("");
+        });
+        PRODUTOS.forEach((p) => {
+          const card = document.querySelector('.x-card[data-id="' + p.id + '"]');
+          if (!card) return;
+          pintarCard(card, p);
+          card.querySelectorAll(".x-opt").forEach((b) => {
+            b.addEventListener("click", () => {
+              card.querySelectorAll(".x-opt").forEach((o) => o.setAttribute("aria-pressed", "false"));
+              b.setAttribute("aria-pressed", "true");
+              pintarCard(card, p);
+            });
+          });
+          const slides = card.querySelector(".x-slides");
+          p.fotos.forEach((f) => {
+            const orig = document.querySelector('#fotos img[data-foto="' + f + '"]');
+            if (orig) slides.appendChild(orig.cloneNode(true));
+            else {
+              const img = document.createElement("img");
+              img.src = f;
+              img.alt = p.nome;
+              img.loading = "lazy";
+              img.dataset.foto = f;
+              slides.appendChild(img);
+            }
+          });
+          const dots = card.querySelectorAll(".x-dots span");
+          if (dots.length) {
+            slides.addEventListener("scroll", () => {
+              const i = Math.round(slides.scrollLeft / slides.clientWidth);
+              dots.forEach((d, j) => d.classList.toggle("is-on", j === i));
+            });
+          }
+          slides.querySelectorAll("img").forEach((img) => {
+            img.addEventListener("click", () => abrirFoto(img));
+          });
+        });
+        filtrar();
+      }
+
+      const box = document.getElementById("lightbox");
+      const boxSlot = document.getElementById("box-slot");
+      function abrirFoto(img) {
+        boxSlot.replaceChildren(img.cloneNode(true));
+        box.classList.add("is-open");
+      }
+      function fecharFoto() {
+        box.classList.remove("is-open");
+        boxSlot.replaceChildren();
+      }
+      document.getElementById("box-close").addEventListener("click", fecharFoto);
+      box.addEventListener("click", (e) => {
+        if (e.target !== document.getElementById("box-close")) fecharFoto();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") fecharFoto();
+      });
+
+      let catAtual = "todos";
+      let soDisponiveis = false;
+      const btnOnly = document.getElementById("only-available");
+
+      function filtrar() {
+        document.querySelectorAll(".x-card").forEach((card) => {
+          const okCat = catAtual === "todos" || card.dataset.cat === catAtual;
+          const okSit = !soDisponiveis || card.dataset.situacao === "Disponível";
+          card.classList.toggle("is-hidden", !(okCat && okSit));
+        });
+        ["vestidos", "calcas", "cosmeticos"].forEach((cat) => {
+          const sec = document.getElementById(cat);
+          const vis = sec.querySelectorAll(".x-card:not(.is-hidden)").length;
+          sec.style.display = vis ? "" : "none";
+        });
+      }
+
+      document.querySelectorAll(".x-pill[data-cat]").forEach((b) => {
+        b.addEventListener("click", () => {
+          catAtual = b.dataset.cat;
+          document.querySelectorAll(".x-pill[data-cat]").forEach((o) => {
+            o.classList.toggle("is-on", o === b);
+            o.setAttribute("aria-current", o === b ? "true" : "false");
+          });
+          filtrar();
+          const alvo = document.getElementById(catAtual === "todos" ? "vestidos" : catAtual);
+          const barra = document.querySelector(".x-bar").offsetHeight;
+          window.scrollTo({ top: alvo.getBoundingClientRect().top + window.scrollY - barra - 8, behavior: "smooth" });
+        });
+      });
+      btnOnly.addEventListener("click", () => {
+        soDisponiveis = !soDisponiveis;
+        btnOnly.setAttribute("aria-pressed", String(soDisponiveis));
+        filtrar();
+      });
+
+      function parseCSV(texto) {
+        const linhas = [];
+        let campo = "",
+          linha = [],
+          aspas = false;
+        for (let i = 0; i < texto.length; i++) {
+          const c = texto[i];
+          if (aspas) {
+            if (c === '"' && texto[i + 1] === '"') {
+              campo += '"';
+              i++;
+            } else if (c === '"') aspas = false;
+            else campo += c;
+          } else if (c === '"') aspas = true;
+          else if (c === ",") {
+            linha.push(campo);
+            campo = "";
+          } else if (c === "\n") {
+            linha.push(campo);
+            linhas.push(linha);
+            linha = [];
+            campo = "";
+          } else if (c !== "\r") campo += c;
+        }
+        linha.push(campo);
+        if (linha.length > 1 || linha[0] !== "") linhas.push(linha);
+        return linhas;
+      }
+
+      const norm = (s) =>
+        String(s || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+      function aplicarPlanilha(texto) {
+        const linhas = parseCSV(texto);
+        if (linhas.length < 2) return;
+        const cab = linhas[0].map(norm);
+        const col = (...nomes) => {
+          for (const n of nomes) {
+            const i = cab.indexOf(norm(n));
+            if (i !== -1) return i;
+          }
+          return -1;
+        };
+        const iNome = col("Nome da peça", "Nome do produto");
+        const iPreco = col("Preço");
+        const iExcl = col("Peça exclusiva?", "Produto exclusivo?");
+        const iSit = col("Situação");
+        const iOp = col("Opção");
+        if (iNome === -1) return;
+        const iCat = col("Categoria");
+        const iTam = col("Tamanho");
+        const iDesc = col("Descrição", "Descricao");
+        const iFoto = col("Foto", "Fotos", "Foto (link do Drive)");
+        const txt = (l, i) => (i !== -1 && l[i] != null ? String(l[i]).trim() : "");
+        const numero = (v) => {
+          let s = String(v || "").replace(/[R$\s]/g, "");
+          if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
+          const n = parseFloat(s);
+          return isFinite(n) && n > 0 ? n : null;
+        };
+        const CATS = { vestidos: "vestidos", vestido: "vestidos", calcas: "calcas", calca: "calcas", conjuntos: "calcas", conjunto: "calcas", "calcas e conjuntos": "calcas", cosmeticos: "cosmeticos", cosmetico: "cosmeticos" };
+        const cat = (v) => CATS[norm(v)] || (norm(v).startsWith("cal") ? "calcas" : norm(v).startsWith("cosm") ? "cosmeticos" : norm(v).startsWith("vest") ? "vestidos" : "");
+        const fotoUrl = (v) => {
+          v = String(v || "").trim();
+          if (!v) return "";
+          const m = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{20,})/) || v.match(/[?&]id=([\w-]{20,})/);
+          if (m && /google\.com/.test(v)) return "https://drive.google.com/thumbnail?id=" + m[1] + "&sz=w1200";
+          if (/^https?:\/\//i.test(v)) return v;
+          return v.replace(/^\/+/, "");
+        };
+        const fotosDe = (v) => String(v || "").split(/[\s,;]+/).map(fotoUrl).filter(Boolean);
+        const novos = {};
+        linhas.slice(1).forEach((l) => {
+          const nomeL = txt(l, iNome);
+          if (!nomeL) return;
+          let p = novos[norm(nomeL)] ? null : PRODUTOS.find((x) => norm(x.nome) === norm(nomeL));
+          if (!p) {
+            // Peça nova: precisa de categoria, preço e foto.
+            const c = cat(txt(l, iCat));
+            const v = numero(txt(l, iPreco));
+            const fs = fotosDe(txt(l, iFoto));
+            const op = txt(l, iOp);
+            if (novos[norm(nomeL)]) {
+              const q = novos[norm(nomeL)];
+              if (op && v) {
+                q.opcoes = q.opcoes || [];
+                q.opcoes.push({ rotulo: op, preco: v });
+                q.preco = Math.min(...q.opcoes.map((x) => x.preco));
+              }
+              if (fs.length) q.fotos.push(...fs.filter((f) => !q.fotos.includes(f)));
+              return;
+            }
+            if (!c || !v || !fs.length) return;
+            p = {
+              id: "planilha-" + norm(nomeL).replace(/[^a-z0-9]+/g, "-"),
+              categoria: c,
+              nome: nomeL,
+              descricao: txt(l, iDesc),
+              tamanho: txt(l, iTam),
+              opcoes: op ? [{ rotulo: op, preco: v }] : null,
+              preco: v,
+              exclusiva: false,
+              situacao: norm(txt(l, iSit)) === "esgotado" ? "Esgotado" : "Disponível",
+              fotos: fs,
+            };
+            novos[norm(nomeL)] = p;
+            PRODUTOS.push(p);
+            return;
+          }
+          if (txt(l, iDesc)) p.descricao = txt(l, iDesc);
+          if (txt(l, iFoto) && !p._fotoPlanilha) {
+            const fs = fotosDe(txt(l, iFoto));
+            if (fs.length) {
+              p.fotos = fs;
+              p._fotoPlanilha = true;
+            }
+          }
+          if (iPreco !== -1 && String(l[iPreco]).trim()) {
+            const v = parseFloat(
+              String(l[iPreco]).replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".")
+            );
+            if (!isNaN(v)) {
+              const rot = iOp !== -1 ? norm(l[iOp]) : "";
+              if (p.opcoes) {
+                const o = rot ? p.opcoes.find((x) => norm(x.rotulo) === rot) : p.opcoes[0];
+                if (o) o.preco = v;
+                p.preco = Math.min(...p.opcoes.map((x) => x.preco));
+              } else p.preco = v;
+            }
+          }
+          if (iExcl !== -1 && String(l[iExcl]).trim()) p.exclusiva = norm(l[iExcl]) === "sim";
+          if (iSit !== -1 && String(l[iSit]).trim())
+            p.situacao = norm(l[iSit]) === "esgotado" ? "Esgotado" : "Disponível";
+        });
+      }
+
+      render();
+
+      if (PLANILHA_CSV) {
+        fetch(PLANILHA_CSV)
+          .then((r) => (r.ok ? r.text() : Promise.reject(new Error("csv"))))
+          .then((t) => {
+            aplicarPlanilha(t);
+            render();
+          })
+          .catch(() => {});
+      }
+    </script>
+  </body>
+</html>
