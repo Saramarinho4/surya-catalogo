@@ -586,20 +586,124 @@
         position: fixed;
         inset: 0;
         z-index: 60;
-        background: rgba(255, 255, 255, 0.97);
+        background: #fffcf6;
         display: none;
         align-items: center;
         justify-content: center;
-        padding: 24px;
+        padding: 64px 16px 20px;
       }
       .x-box.is-open {
         display: flex;
       }
-      .x-box img {
-        max-width: 100%;
-        max-height: 88vh;
+      .x-box__in {
+        width: 100%;
+        max-width: 920px;
+        display: grid;
+        gap: 18px;
+        align-items: center;
+      }
+      @media (min-width: 760px) {
+        .x-box__in {
+          grid-template-columns: 1.4fr 1fr;
+          gap: 36px;
+        }
+      }
+      .x-box__stage {
+        position: relative;
+      }
+      .x-box__slides {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        border-radius: 6px;
+      }
+      .x-box__slides::-webkit-scrollbar {
+        display: none;
+      }
+      .x-box__slides img {
+        flex: 0 0 100%;
+        width: 100%;
+        height: min(66vh, 640px);
         object-fit: contain;
-        border-radius: 4px;
+        scroll-snap-align: center;
+        cursor: default;
+      }
+      .x-box__dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .x-box__dots button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border-radius: 50%;
+        border: 1px solid #c39027;
+        background: transparent;
+        cursor: pointer;
+      }
+      .x-box__dots button.is-on {
+        background: #c39027;
+      }
+      .x-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(195, 144, 39, 0.6);
+        background: rgba(255, 255, 255, 0.92);
+        color: #0d4734;
+        font-size: 24px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .x-arrow--prev {
+        left: 8px;
+      }
+      .x-arrow--next {
+        right: 8px;
+      }
+      .x-box__stage .x-arrow {
+        top: calc(50% - 10px);
+      }
+      .x-arrow[hidden] {
+        display: none;
+      }
+      .x-stage .x-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+      }
+      .x-box__info {
+        text-align: center;
+        display: grid;
+        gap: 8px;
+        justify-items: center;
+      }
+      .x-box__name {
+        font-family: var(--x-serif);
+        font-size: 24px;
+        color: var(--x-ink);
+      }
+      .x-box__price {
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        color: #0d4734;
+      }
+      .x-box__info {
+        --x-accent: var(--x-green);
+      }
+      .x-box__info .x-btn {
+        min-width: 220px;
+        margin-top: 4px;
       }
       .x-box__close {
         position: absolute;
@@ -738,9 +842,21 @@
       </svg>
     </a>
 
-    <div class="x-box" id="lightbox" role="dialog" aria-label="Foto ampliada" aria-modal="true">
+    <div class="x-box" id="lightbox" role="dialog" aria-label="Fotos da peça" aria-modal="true">
       <button class="x-box__close" type="button" id="box-close" aria-label="Fechar">×</button>
-      <div id="box-slot"></div>
+      <div class="x-box__in">
+        <div class="x-box__stage">
+          <div class="x-box__slides" id="box-slides"></div>
+          <button class="x-arrow x-arrow--prev" type="button" id="box-prev" aria-label="Foto anterior">‹</button>
+          <button class="x-arrow x-arrow--next" type="button" id="box-next" aria-label="Próxima foto">›</button>
+          <div class="x-box__dots" id="box-dots"></div>
+        </div>
+        <div class="x-box__info">
+          <p class="x-box__name" id="box-name"></p>
+          <p class="x-box__price" id="box-price"></p>
+          <a class="x-btn" id="box-wa" target="_blank" rel="noopener" href="#">Pedir pelo WhatsApp</a>
+        </div>
+      </div>
     </div>
 
     <div id="fotos" hidden>
@@ -1133,6 +1249,10 @@
           fotos +
           "</div>" +
           dots +
+          (p.fotos.length > 1
+            ? '<button class="x-arrow x-arrow--prev" type="button" aria-label="Foto anterior" hidden>‹</button>' +
+              '<button class="x-arrow x-arrow--next" type="button" aria-label="Próxima foto">›</button>'
+            : "") +
           "</div>" +
           '<div class="x-card__body">' +
           '<h3 class="x-name">' +
@@ -1210,35 +1330,95 @@
             }
           });
           const dots = card.querySelectorAll(".x-dots span");
-          if (dots.length) {
-            slides.addEventListener("scroll", () => {
-              const i = Math.round(slides.scrollLeft / slides.clientWidth);
-              dots.forEach((d, j) => d.classList.toggle("is-on", j === i));
-            });
-          }
-          slides.querySelectorAll("img").forEach((img) => {
-            img.addEventListener("click", () => abrirFoto(img));
+          const prev = card.querySelector(".x-arrow--prev");
+          const next = card.querySelector(".x-arrow--next");
+          const total = slides.querySelectorAll("img").length;
+          const atual = () => Math.round(slides.scrollLeft / slides.clientWidth);
+          const marcar = () => {
+            const i = atual();
+            dots.forEach((d, j) => d.classList.toggle("is-on", j === i));
+            if (prev) prev.hidden = i <= 0;
+            if (next) next.hidden = i >= total - 1;
+          };
+          slides.addEventListener("scroll", marcar, { passive: true });
+          const ir = (i) => slides.scrollTo({ left: i * slides.clientWidth, behavior: "smooth" });
+          if (prev) prev.addEventListener("click", () => ir(atual() - 1));
+          if (next) next.addEventListener("click", () => ir(atual() + 1));
+          slides.querySelectorAll("img").forEach((img, i) => {
+            img.addEventListener("click", () => abrirFoto(p, card, i));
           });
         });
         filtrar();
       }
 
       const box = document.getElementById("lightbox");
-      const boxSlot = document.getElementById("box-slot");
-      function abrirFoto(img) {
-        boxSlot.replaceChildren(img.cloneNode(true));
+      const boxSlides = document.getElementById("box-slides");
+      const boxDots = document.getElementById("box-dots");
+      const boxPrev = document.getElementById("box-prev");
+      const boxNext = document.getElementById("box-next");
+      const boxAtual = () => Math.round(boxSlides.scrollLeft / (boxSlides.clientWidth || 1));
+      function boxMarcar() {
+        const i = boxAtual();
+        const n = boxSlides.children.length;
+        [...boxDots.children].forEach((d, j) => d.classList.toggle("is-on", j === i));
+        boxPrev.hidden = n < 2 || i <= 0;
+        boxNext.hidden = n < 2 || i >= n - 1;
+      }
+      function boxIr(i, suave) {
+        boxSlides.scrollTo({ left: i * boxSlides.clientWidth, behavior: suave ? "smooth" : "auto" });
+      }
+      function abrirFoto(p, card, inicio) {
+        const imgs = [...card.querySelectorAll(".x-slides img")];
+        boxSlides.replaceChildren(
+          ...imgs.map((img, i) => {
+            const c = document.createElement("img");
+            c.src = img.currentSrc || img.src;
+            c.alt = p.nome + ", foto " + (i + 1);
+            return c;
+          })
+        );
+        boxDots.replaceChildren(
+          ...(imgs.length > 1
+            ? imgs.map((_, i) => {
+                const d = document.createElement("button");
+                d.type = "button";
+                d.setAttribute("aria-label", "Foto " + (i + 1));
+                d.addEventListener("click", () => boxIr(i, true));
+                return d;
+              })
+            : [])
+        );
+        document.getElementById("box-name").textContent = p.nome;
+        document.getElementById("box-price").textContent = card.querySelector(".x-price").textContent;
+        const wa = document.getElementById("box-wa");
+        const btn = card.querySelector(".x-btn");
+        wa.href = btn.href;
+        wa.textContent = btn.textContent;
+        wa.classList.toggle("x-btn--ghost", btn.classList.contains("x-btn--ghost"));
         box.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => {
+          boxIr(inicio || 0, false);
+          boxMarcar();
+        });
       }
       function fecharFoto() {
         box.classList.remove("is-open");
-        boxSlot.replaceChildren();
+        document.body.style.overflow = "";
+        boxSlides.replaceChildren();
       }
+      boxSlides.addEventListener("scroll", boxMarcar, { passive: true });
+      boxPrev.addEventListener("click", () => boxIr(boxAtual() - 1, true));
+      boxNext.addEventListener("click", () => boxIr(boxAtual() + 1, true));
       document.getElementById("box-close").addEventListener("click", fecharFoto);
       box.addEventListener("click", (e) => {
-        if (e.target !== document.getElementById("box-close")) fecharFoto();
+        if (e.target === box) fecharFoto();
       });
       document.addEventListener("keydown", (e) => {
+        if (!box.classList.contains("is-open")) return;
         if (e.key === "Escape") fecharFoto();
+        if (e.key === "ArrowRight") boxIr(boxAtual() + 1, true);
+        if (e.key === "ArrowLeft") boxIr(boxAtual() - 1, true);
       });
 
       let catAtual = "todos";
